@@ -1,10 +1,6 @@
 package livenowjpaweb.jpashop;
 
-import com.fasterxml.jackson.databind.deser.std.StdDelegatingDeserializer;
-import com.fasterxml.jackson.databind.deser.std.StdDeserializer;
-import com.fasterxml.jackson.databind.deser.std.StdKeyDeserializer;
-import livenowjpaweb.jpashop.user.Member;
-import org.assertj.core.api.Assertions;
+import livenowjpaweb.jpashop.domain.Member;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
