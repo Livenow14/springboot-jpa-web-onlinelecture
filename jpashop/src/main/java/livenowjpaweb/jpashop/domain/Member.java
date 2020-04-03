@@ -21,4 +21,5 @@ public class Member {
 
         @OneToMany(mappedBy = "member") //거울일 뿐이야 락 ㅗ하는것
         private List<Order> orders = new ArrayList<>();
+
 }
