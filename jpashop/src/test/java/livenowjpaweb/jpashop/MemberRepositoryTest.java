@@ -1,3 +1,4 @@
+/*
 package livenowjpaweb.jpashop;
 
 import livenowjpaweb.jpashop.domain.Member;
@@ -37,4 +38,4 @@ public class MemberRepositoryTest {
     }
 
 
-}
+}*/
