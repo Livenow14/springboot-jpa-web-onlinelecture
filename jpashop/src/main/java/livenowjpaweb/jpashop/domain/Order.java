@@ -3,6 +3,7 @@ package livenowjpaweb.jpashop.domain;
 
 import lombok.Getter;
 import lombok.Setter;
+import org.aspectj.weaver.ast.Or;
 
 
 import javax.persistence.*;
@@ -59,7 +60,44 @@ public class Order {
         this.delivery = delivery;
         delivery.setOrder(this);
     }
+    //==생성 메서드 ==// //생성하는 지점을 변경하자면 여기만 바꾸면 됨
+    public static Order createOrder(Member member, Delivery delivery, OrderItem... orderItems){
+        Order order = new Order();
+        order.setMember(member);
+        order.setDelivery(delivery);
+        for(OrderItem orderItem : orderItems){
+            order.addOrderItem(orderItem);
+        }
+        order.setStatus(OrderStatus.ORDER);
+        order.setOrderDate(LocalDateTime.now());
+        return order;
+    }
+    //==비즈니스 로직 ==//
+    //주문취소
 
+    public void cancel(){
+        if(delivery.getStatus() == DeliveryStatus.COMP){
+            throw new IllegalStateException("이미 배송 완료된 상품은 취소가 불가능합니다.");
+        }
+        this.setStatus(OrderStatus.CANCEL);
+        for(OrderItem orderItem : orderItems){
+            orderItem.cancel();
+        }
+
+    }
+
+    //전체 주문 가겨 조회
+    public int getTotalPrice() {
+/*        int totalPrice = 0;
+        for(OrderItem orderItem : orderItems){
+            totalPrice += orderItem.getTotalPrice();
+        }
+        return totalPrice;*/
+        //람다나 스트림 사용 필
+
+        int totalPrice = orderItems.stream().mapToInt(OrderItem::getTotalPrice).sum();
+        return totalPrice;
+    }
 
 
 }
