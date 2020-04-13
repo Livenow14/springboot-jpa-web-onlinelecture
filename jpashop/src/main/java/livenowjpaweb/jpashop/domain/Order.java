@@ -1,7 +1,9 @@
 package livenowjpaweb.jpashop.domain;
 
 
+import lombok.AccessLevel;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.aspectj.weaver.ast.Or;
 
@@ -17,6 +19,7 @@ import static javax.persistence.FetchType.*;
 @Table(name ="orders")
 @Getter
 @Setter
+@NoArgsConstructor(access = AccessLevel.PROTECTED)  //이렇게 제한하면서 짜야지, 누군가 잘못 접근할 때 제한할 수 있다.
 public class Order {
     @Id @GeneratedValue
     @Column(name = "order_id")
