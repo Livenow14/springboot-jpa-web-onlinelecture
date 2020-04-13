@@ -58,7 +58,7 @@ public class MemberServiceTest {
         }*/             //@Test(expected = IllegalStateException.class)를 하면  이 문구를 빼도됨
 
         //then
-        fail("예외가 발생해야 한다. ");
+        fail("예외가 발생해야 한다. ");  //예외가 발생하지 않으면 테스트 창에 띄워줌
     }
 
 }
